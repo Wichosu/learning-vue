@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 
-defineProps(['addTask']);
+const emit = defineEmits(['addTask']);
 
 const Task = ref("");
 
@@ -10,7 +10,7 @@ const updateTask = (e) => {
 }
 
 const submit = () => {
-  addTask(Task.value);
+  emit('addTask', Task.value);
 }
 
 </script>

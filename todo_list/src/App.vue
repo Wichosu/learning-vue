@@ -7,13 +7,14 @@ const Tasks = ref([]);
 
 const addTask = (task) => {
   Tasks.value.push(task);
+  console.log(Tasks.value);
 }
 
 </script>
 
 <template>
-  <TaskForm :add-task='addTask' />
-  <TaskList :tasksList='Tasks' />
+  <TaskForm @add-task='addTask' />
+  <TaskList :tasks-list='Tasks.values' />
   
 </template>
 
