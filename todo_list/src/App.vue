@@ -14,7 +14,7 @@ const addTask = (task) => {
 
 <template>
   <TaskForm @add-task='addTask' />
-  <TaskList :tasks-list='Tasks.values' />
+  <TaskList v-bind:todos='Tasks' />
   
 </template>
 

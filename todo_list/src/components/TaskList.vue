@@ -1,14 +1,11 @@
 <script setup>
-const props = defineProps(['tasksList']);
-
-console.log(props.tasksList);
 
 </script>
 <template>
   <div class='task-container'>
     <h1>My Tasks</h1>
     <li>Demo Task</li>
-    <li v-for='task in props.tasksList'>
+    <li v-bind:key='task' v-for='task in todos'>
       {{ task }}
     </li>
   </div>
