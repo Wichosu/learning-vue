@@ -10,6 +10,10 @@ const addTask = (task) => {
   console.log(Tasks.value);
 };
 
+const removeTask = () => {
+
+};
+
 </script>
 
 <template>

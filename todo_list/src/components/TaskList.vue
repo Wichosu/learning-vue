@@ -1,5 +1,6 @@
 <script setup>
 import { defineProps } from 'vue';
+import Task from './Task.vue';
 
 const props = defineProps(['Tasks']);
 
@@ -8,15 +9,7 @@ const props = defineProps(['Tasks']);
   <div class='task-container'>
     <h1>My Tasks</h1>
     <div class='task-list'>
-      <div class='task-item' v-for='task in props.Tasks'>
-        <li>
-          {{ task }}
-        </li>
-        <div class='task-icons'>
-          <span class='task-done'>✔</span>
-          <span class='task-delete'>✘</span>
-        </div>
-      </div>
+      <Task v-for='task in props.Tasks' v-bind:task='task' />
     </div>
   </div>
 </template>
@@ -41,55 +34,4 @@ const props = defineProps(['Tasks']);
     gap: 1rem;
   }
 
-  .task-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid black;
-    border-radius: 4px;
-    padding: 10px 40px;
-    max-width: 600px;
-    background-color: #f9fafb;
-  }
-
-  .task-item:nth-child(even) {
-    background-color: #dbeafe; 
-  }
-
-  .task-item li {
-    list-style: none;
-  }
-
-  .task-item span {
-    justify-self: flex-end;
-    cursor: pointer;
-  }
-
-  .task-icons {
-    display: flex;
-    gap: 20px;
-  }
-
-  .task-icons span {
-    padding: 5px;
-    border-radius: 8px;
-  }
-
-  .task-done {
-    color: #16a34a;
-  }
-
-  .task-done:hover {
-    color: #f9fafb ;
-    background-color: #22c55e;
-  }
-
-  .task-delete {
-    color: #dc2626;
-  }
-
-  .task-delete:hover {
-    color: #f9fafb;
-    background-color: #dc2626;
-  }
 </style>
