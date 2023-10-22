@@ -1,18 +1,18 @@
 <script setup>
 import { ref } from 'vue';
+import { Task } from '../models/Task';
 
 const emit = defineEmits(['addTask']);
 
-const Task = ref("");
+const input = ref("");
 
 const updateTask = (e) => {
-  Task.value = e.target.value;
+  input.value = e.target.value;
 }
 
 const submit = () => {
-  emit('addTask', Task.value);
-}
-
+  emit('addTask', new Task(input.value));
+};
 </script>
 
 <template>
