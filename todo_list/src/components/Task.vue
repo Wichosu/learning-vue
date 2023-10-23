@@ -8,7 +8,7 @@ const props = defineProps(['task']);
 <template>
   <div class='task-item'>
     <li>
-      {{ props.task }}
+      {{ props.task.value }}
     </li>
     <div class='task-icons'>
       <span class='task-done'>✔</span>

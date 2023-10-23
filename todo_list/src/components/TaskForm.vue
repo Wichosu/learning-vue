@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { Task } from '../models/Task';
+import Task from '../models/Task.js';
 
 const emit = defineEmits(['addTask']);
 
