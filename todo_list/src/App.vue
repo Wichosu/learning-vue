@@ -7,14 +7,10 @@ const Tasks = ref([]);
 
 const addTask = (task) => {
   Tasks.value.push(task);
-  console.log(Tasks.value);
 };
 
 const removeTask = (id) => {
-  console.log(id);
   Tasks.value = Tasks.value.filter((task) => task.id !== id);
-//  Tasks.value.filter((task) => task.id !== id);
-  console.log(Tasks.value);
 };
 
 provide('removeTask', removeTask);

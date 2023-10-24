@@ -8,8 +8,8 @@ const removeTask = inject('removeTask');
 </script>
 
 <template>
-  <div class='task-item'>
-    <li>
+  <div class='task-item' :class="{ 'opacity': true }">
+    <li :class="{ 'linethrough': true}">
       {{ props.task.value }}
     </li>
     <div class='task-icons'>
@@ -29,6 +29,14 @@ const removeTask = inject('removeTask');
     padding: 10px 40px;
     max-width: 600px;
     background-color: #f9fafb;
+  }
+
+  .linethrough {
+    text-decoration: line-through;
+  }
+
+  .opacity {
+    opacity: 0.6;
   }
 
   .task-item:nth-child(even) {
