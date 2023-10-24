@@ -1,4 +1,4 @@
-<script setup>
+<script lang='ts' setup>
 import { defineProps, inject } from 'vue';
 
 const props = defineProps(['task']);

@@ -1,5 +1,6 @@
-<script setup>
+<script lang='ts' setup>
 import { ref, provide } from 'vue';
+import type { RemoveTask } from './types/types';
 import TaskForm from './components/TaskForm.vue';
 import TaskList from './components/TaskList.vue';
 
@@ -9,7 +10,7 @@ const addTask = (task) => {
   Tasks.value.push(task);
 };
 
-const removeTask = (id) => {
+const removeTask = (id: RemoveTask): void => {
   Tasks.value = Tasks.value.filter((task) => task.id !== id);
 };
 
