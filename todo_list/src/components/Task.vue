@@ -1,7 +1,9 @@
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, inject } from 'vue';
 
 const props = defineProps(['task']);
+
+const removeTask = inject('removeTask');
 
 </script>
 
@@ -12,7 +14,7 @@ const props = defineProps(['task']);
     </li>
     <div class='task-icons'>
       <span class='task-done'>✔</span>
-      <span class='task-delete'>✘</span>
+      <span class='task-delete' @click='() => removeTask(props.task.id)'>✘</span>
     </div>
   </div>
 </template>
