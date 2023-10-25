@@ -1,11 +1,11 @@
 <script lang='ts' setup>
-import { ref, provide } from 'vue';
+import { ref, provide, type Ref } from 'vue';
 import type { RemoveTask } from './types/types';
-import Task from './models/Task';
+import { Task } from './models/Task';
 import TaskForm from './components/TaskForm.vue';
 import TaskList from './components/TaskList.vue';
 
-const Tasks = ref([]);
+const Tasks: Ref<Task[]> = ref([]);
 
 const addTask = (task: Task): void => {
   Tasks.value.push(task);

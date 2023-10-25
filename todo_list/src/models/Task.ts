@@ -1,6 +1,6 @@
 import { State } from "../types/enums";
 
-export default class Task {
+export class Task {
   id: string;
   value: string;
   state: string;
