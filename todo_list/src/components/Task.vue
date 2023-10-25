@@ -1,9 +1,10 @@
 <script lang='ts' setup>
 import { defineProps, inject } from 'vue';
+import type { RemoveTask } from '../types/types';
 
 const props = defineProps(['task']);
 
-const removeTask = inject('removeTask');
+const removeTask = inject<RemoveTask>('removeTask');
 
 </script>
 

@@ -1,18 +1,19 @@
 <script lang='ts' setup>
-import { ref } from 'vue';
+import { ref, type HtmlHTMLAttributes, type InputHTMLAttributes, type ReservedProps } from 'vue';
 import Task from '../models/Task.ts';
 
 const emit = defineEmits(['addTask']);
 
 const input = ref("");
 
-const updateTask = (e) => {
+const updateTask = (e: HTMLInputElement): void => {
   input.value = e.target.value;
 }
 
 const submit = () => {
   emit('addTask', new Task(input.value));
 };
+
 </script>
 
 <template>
