@@ -1,10 +1,10 @@
 <script lang='ts' setup>
 import { defineProps, inject } from 'vue';
-import type { RemoveTask } from '../types/types';
+import { RemoveTaskKey } from '../types/symbols';
 
 const props = defineProps(['task']);
 
-const removeTask = inject<RemoveTask>('removeTask');
+const removeTask = inject(RemoveTaskKey);
 
 </script>
 

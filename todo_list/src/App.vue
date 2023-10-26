@@ -1,7 +1,8 @@
 <script lang='ts' setup>
 import { ref, provide, type Ref } from 'vue';
-import type { RemoveTask } from './types/types';
 import { Task } from './models/Task';
+import { RemoveTaskKey } from './types/symbols';
+import type { RemoveTask } from './types/types';
 import TaskForm from './components/TaskForm.vue';
 import TaskList from './components/TaskList.vue';
 
@@ -11,17 +12,17 @@ const addTask = (task: Task): void => {
   Tasks.value.push(task);
 };
 
-const removeTask = (id: string): void => {
+const removeTask: RemoveTask = (id: string ): void => {
   Tasks.value = Tasks.value.filter((task) => task.id !== id);
 };
 
-provide<RemoveTask>('removeTask', removeTask);
+provide(RemoveTaskKey, removeTask);
 
 </script>
 
 <template>
   <TaskForm @add-task='addTask' />
-  <TaskList v-bind:Tasks='Tasks' @remove-task='removeTask' />
+  <TaskList v-bind:Tasks='Tasks' />
 </template>
 
 <style scoped>

@@ -1,10 +1,15 @@
 <script lang='ts' setup>
 import { ref } from 'vue';
+import type { Ref } from 'vue';
 import { Task } from '../models/Task.ts';
 
-const emit = defineEmits(['addTask']);
+//const emit = defineEmits(['addTask']);
 
-const input = ref("");
+const emit = defineEmits<{
+  (e: 'addTask', task: Task): void
+}>()
+
+const input: Ref<string> = ref("");
 
 const updateTask = (e: Event): void => {
   const target = (<HTMLInputElement>e.target);

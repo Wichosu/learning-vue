@@ -3,15 +3,11 @@ import { defineProps } from 'vue';
 import Task from './Task.vue';
 import { Task as TaskType}from '../models/Task';
 
-//const props = defineProps(['Tasks']);
-
 const props = defineProps(
   {
     Tasks: { type: Array<TaskType> },
   }
 )
-
-//const Tasks: TaskType[] = props.Tasks
 
 </script>
 <template>
