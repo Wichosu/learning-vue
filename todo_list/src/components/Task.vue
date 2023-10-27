@@ -1,29 +1,50 @@
 <script setup lang='ts'>
 import { defineProps, inject } from 'vue';
 import { RemoveTaskKey } from '../types/symbols';
-import type { Task } from '../models/Task';
+import { Task } from '../models/Task';
+import { State } from '../types/enums';
 
 const props = defineProps<{
   task: Task
-}>()
+}>();
 
 const removeTask = inject(RemoveTaskKey);
+
+const markAsDone = (): void => {
+  props.task.state = State.Done;
+};
 
 </script>
 
 <template>
-  <div class='task-item' :class="{ 'opacity': true }">
-    <li :class="{ 'linethrough': true}">
+  <div class='task-item' :class="{ 'opacity': props.task.isDone() }">
+    <li :class="{ 'linethrough': props.task.isDone() }">
       {{ props.task.value }}
     </li>
     <div class='task-icons'>
-      <span class='task-done'>✔</span>
+      <span 
+        :class="{
+          'task-done': props.task.isPending(),
+          'task-reset': props.task.isDone() 
+        }" 
+        @click=markAsDone
+      >
+        {{ props.task.isDone()? '↺' : '✔'}}
+      </span>
       <span class='task-delete' @click='() => removeTask(props.task.id)'>✘</span>
     </div>
   </div>
 </template>
 
 <style>
+  :root {
+    --green: #16a34a;
+    --yellow:  #385399;
+    --red: #dc2626;
+    --white: #f9fafb;
+    --gray: #dbeafe;
+  }
+
   .task-item {
     display: flex;
     justify-content: space-between;
@@ -32,7 +53,7 @@ const removeTask = inject(RemoveTaskKey);
     border-radius: 4px;
     padding: 10px 40px;
     max-width: 600px;
-    background-color: #f9fafb;
+    background-color: var(--white);
   }
 
   .linethrough {
@@ -44,7 +65,7 @@ const removeTask = inject(RemoveTaskKey);
   }
 
   .task-item:nth-child(even) {
-    background-color: #dbeafe; 
+    background-color: var(--gray); 
   }
 
   .task-item li {
@@ -68,21 +89,30 @@ const removeTask = inject(RemoveTaskKey);
   }
 
   .task-done {
-    color: #16a34a;
+    color: var(--green);
   }
 
   .task-done:hover {
-    color: #f9fafb ;
-    background-color: #22c55e;
+    color: var(--white);
+    background-color: var(--green);
+  }
+
+  .task-reset {
+    color: var(--yellow);
+  }
+
+  .task-reset:hover {
+    color: var(--white);
+    background-color: var(--yellow);
   }
 
   .task-delete {
-    color: #dc2626;
+    color: var(--red);
   }
 
   .task-delete:hover {
-    color: #f9fafb;
-    background-color: #dc2626;
+    color: var(--white);
+    background-color: var(--red);
   }
 
 </style>

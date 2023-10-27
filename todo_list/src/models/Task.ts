@@ -10,4 +10,12 @@ export class Task {
     this.value = value;
     this.state = State.Pending;
   };
+
+  isPending(): Boolean {
+    return this.state === State.Pending;
+  };
+
+  isDone(): Boolean {
+    return this.state === State.Done;
+  };
 };
