@@ -1,4 +1,4 @@
-<script lang='ts' setup>
+<script setup lang='ts'>
 import { defineProps } from 'vue';
 import Task from './Task.vue';
 import { Task as TaskType}from '../models/Task';

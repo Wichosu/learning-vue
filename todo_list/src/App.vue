@@ -1,4 +1,4 @@
-<script lang='ts' setup>
+<script setup lang='ts' >
 import { ref, provide, type Ref } from 'vue';
 import { Task } from './models/Task';
 import { RemoveTaskKey } from './types/symbols';

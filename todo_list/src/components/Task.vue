@@ -1,8 +1,11 @@
-<script lang='ts' setup>
+<script setup lang='ts'>
 import { defineProps, inject } from 'vue';
 import { RemoveTaskKey } from '../types/symbols';
+import type { Task } from '../models/Task';
 
-const props = defineProps(['task']);
+const props = defineProps<{
+  task: Task
+}>()
 
 const removeTask = inject(RemoveTaskKey);
 
