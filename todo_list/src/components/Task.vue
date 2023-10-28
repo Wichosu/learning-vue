@@ -11,7 +11,9 @@ const props = defineProps<{
 const removeTask = inject(RemoveTaskKey);
 
 const markAsDone = (): void => {
-  props.task.state = State.Done;
+  props.task.isDone()
+  ? props.task.state = State.Pending
+  : props.task.state = State.Done;
 };
 
 </script>
@@ -39,7 +41,7 @@ const markAsDone = (): void => {
 <style>
   :root {
     --green: #16a34a;
-    --yellow:  #385399;
+    --yellow:  #d97706;
     --red: #dc2626;
     --white: #f9fafb;
     --gray: #dbeafe;
