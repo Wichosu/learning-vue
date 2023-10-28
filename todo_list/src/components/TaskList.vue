@@ -7,7 +7,7 @@ const props = defineProps(
   {
     Tasks: { type: Array<TaskType> },
   }
-)
+);
 
 </script>
 <template>
