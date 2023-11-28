@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 import { defineProps, inject } from 'vue';
-import { RemoveTaskKey, SendToEndOfListKey } from '../types/symbols';
+import { RemoveTaskKey, SendToEndOfListKey, SendToStartOfListKey } from '../types/symbols';
 import { Task } from '../models/Task';
 import { State } from '../types/enums';
 
@@ -10,15 +10,19 @@ const props = defineProps<{
 
 const removeTask = inject(RemoveTaskKey);
 const sendToEndOfList = inject(SendToEndOfListKey);
+const sendToStartOfList = inject(SendToStartOfListKey);
 
 const toggleState = (): void => {
   if(props.task.isDone()) {
     props.task.state = State.Pending;
+    sendToStartOfList(props.task.id);
+    return
   }
 
   if(props.task.isPending()) {
     props.task.state = State.Done;
     sendToEndOfList(props.task.id);
+    return
   }
 };
 
