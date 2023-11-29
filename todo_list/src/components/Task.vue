@@ -26,10 +26,47 @@ const toggleState = (): void => {
   }
 };
 
+const dragStart = (e: DragEvent) => {
+  e.dataTransfer.effectAllowed = "move";
+
+  const taskDiv = (<HTMLDivElement>e.target);
+
+  e.dataTransfer.setData("text/taskId", props.task.id);
+
+};
+
+const dragEnter = (e: DragEvent) => {
+  const divElement = (<HTMLDivElement>e.target);
+
+  if(e.dataTransfer.getData("text/taskId") !== props.task.id) {
+    divElement.classList.add("onDragEnter");
+  };
+};
+
+const dragLeave = (e: DragEvent) => {
+  const divElement = (<HTMLDivElement>e.target);
+
+  divElement.classList.remove("onDragEnter");
+};
+
+const dragOver = (e: DragEvent) => {
+  console.log(e.dataTransfer.getData("text/taskId"));
+
+  //swap task places on array
+};
+
 </script>
 
 <template>
-  <div class='task-item' :class="{ 'opacity': props.task.isDone() }">
+  <div 
+    v-on:dragstart='dragStart'
+    v-on:dragenter='dragEnter'
+    v-on:dragover='dragOver'
+    v-on:dragleave='dragLeave'
+    draggable='true' 
+    class='task-item' 
+    :class="{ 'opacity': props.task.isDone() }"
+  >
     <li :class="{ 'linethrough': props.task.isDone() }">
       {{ props.task.value }}
     </li>
@@ -125,6 +162,10 @@ const toggleState = (): void => {
   .task-delete:hover {
     color: var(--white);
     background-color: var(--red);
+  }
+
+  .onDragEnter {
+    background-color: red !important;
   }
 
 </style>
